@@ -1,0 +1,36 @@
+Java接口
+
+聲明接口
+interface 接口名
+
+實現接口
+class 類名 implements 接口名1, 接口名2
+
+小結
+1. 在Java中，一個類可以實現多個接口
+2. 在Java中，接口之間支持多繼承
+3. 接口中的屬性都是常量
+4. 接口中的方法都是抽象的(Java 8之後可以有實現過的方法)
+
+---------------------------------------------------
+Scala接口
+
+從面向對象來看，接口並不屬於面向對象的範疇，Scala是純面向對象的語言，在Scala中，沒有接口
+Scala中，採用特質trait來代替接口的概念，也就是說，多個類具有相同的特質時，就可以將這個特質獨立出來，採用關鍵字trait
+聲明
+可以理解trait等價於interface + abstract class
+
+Java實現interface
+Scala繼承trait
+Scala繼承trait有兩種方式: 1. 動態混入(mixin) 2. 傳統方式，直接繼承(實現)特質，同Java的作法
+
+trait的聲明
+trait 特質名{
+    trait體
+}
+
+trait命名，一般首字母大寫
+Cloneable, Serializable
+
+object T1 extends Serializable{...} // Serializable是Scala的一個特質trait
+在Scala中，Java中的接口可以當作特質使用

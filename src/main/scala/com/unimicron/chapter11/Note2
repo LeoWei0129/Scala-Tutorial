@@ -1,0 +1,56 @@
+數組(定長數組) - 聲明泛型
+
+1. 定義數組(兩種方式)
+a. 這裡的數組等同於Java的數組，[]的類型就是數組的類型
+   val arr1 = new Array[Int](10)
+   arr1(1) = 7 // 賦值，集合元素用小括號訪問
+b. 在定義數組時，直接初始化並賦值
+   此例中的Array類型是[Any]
+   val arr2 = Array(1, 3, "abc") // 使用Object Array的Apply()創建數組對象
+   arr2(2) = 90 // 報錯，因為索引2的值已經確定是String了
+c. 也可以使用傳統的方式遍歷(下標的方式來遍歷賦值)
+
+數組(可變數組) - 聲明泛型
+1. 定義數組
+val arr2 = ArrayBuffer[Int]() // 可以指定或不指定長度
+arr2.append(7) // 追加值
+arr2(0) = 3 // 重新賦值
+
+小結
+1. ArrayBuffer是變長數組，類似Java的ArrayList
+2. var arr1 = ArrayBuffer[Int]()也是使用apply()來構建對象
+3. def append(elements: A*)接收的是可變參數
+4. 每append一次，arr在底層會重新分配空間，進行擴容，arr的內存地址就會發生變化，也就成為新的ArrayBuffer(偽動態生成)，所以速度不快
+
+可變數組與定長數組的轉換
+開發中，這個操作會經常使用
+arr1.toBuffer // 定長 -> 可變
+arr2.toArray // 可變 -> 定長
+arr2.toArray返回的結果才是一個定長數組，arr2本身沒有變化
+arr1.toArray返回的結果才是一個可變數組，arr1本身沒有變化
+使用時機
+開發中，原先為了效率高，創建了Array，但後來為了進行動態修改，轉成ArrayBuffer，之後又回到Array進行運作
+
+多維數組
+1. 定義
+   var arr = Array.ofDim[Double](3, 4)
+   說明: 二維數組中有三個一維數組，每個一維數組有四個元素
+2. 賦值
+   arr(1)(1) = 4.2
+
+Scala數組與Java的List互轉
+透過import scala.collection.JavaConversions.bufferAsJavaList做隱式轉換(Scala BufferArray -> Java List)
+透過import scala.collection.JavaConversions.asScalaBuffer做隱式轉換(Java List -> Scala BufferArray)
+
+補充
+trait Trait1{}
+class A extends Trait1{}
+object B{
+    def test(m: Trait1): Unit = {
+        println("ok")
+    }
+}
+// 當一個類繼承了一個trait
+// 那麼該類的實例，可以傳遞給這個trait的引用
+val a = new A
+B.test(a)

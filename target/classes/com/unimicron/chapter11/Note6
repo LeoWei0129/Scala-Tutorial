@@ -1,0 +1,20 @@
+映射Map
+
+Java中的Map
+HashMap是一個散列表(數組+鏈表)，他存儲的內容是鍵值對(key+value)映射，Java中的HashMap是無序的，且key不能重複
+
+Scala中的Map
+1. Scala中的Map和Java的類似，也是一個散列表，存儲的內容也是鍵值對映射，Scala中不可變的Map是有序的，可變的Map是無序的
+2. Scala中，有可變Map(scala.collection.mutable.Map)和不可變Map(scala.collection.immutable.Map)
+
+取值
+val value = Map("Alice")
+1. 如果key存在，返回對應的值
+2. 如果key不存在，拋出異常(java.util.NoSuchElementException)
+3. 在Java中，如果key不存在，則返回null
+
+如何選擇取值的方式
+1. 如果確定map有這個key，則應當使用map(key)，效率高，速度快
+2. 如果無法確定map是否有這個key，且當有key/沒有key時有對應的不同業務邏輯使用map.contains(key)
+3. 如果只是簡單地希望得到一個值，使用map.getOrElse("ip", "127.0.0.1")
+

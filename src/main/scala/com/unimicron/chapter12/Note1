@@ -1,0 +1,59 @@
+集合操作
+
+1. 集合元素的映射 - map映射操作
+實際需求:
+將List(3, 5, 7)中的所有元素都*2，將其結果放到一個新的集合中返回，即返回新的List(6, 10, 14)
+-> 這是一個關於集合元素映射操作的問題
+在Scala中，可以通過map映射操作來解決: 將集合中的每一個元素通過指定功能(函數)映射(轉換)成新的結果集合，這裡其實就是
+所謂的將函數作為參數喘地給另外一個函數，這是函數式編程的特點
+
+以HashSet為例說明
+def map[B](f: (A) => B): HashSet[B] // map函數的簽名
+a. 這個就是map映射函數，任何集合類型都可接收
+b. [B]是泛型
+c. map是一個高階函數(可以接受一個函數的函數，就是高階函數)，可以接收函數f: (A) => B，A也是泛型，代表傳給這個函數的類型，
+   B代表這個函數返回的類型
+d. HashSet[B]就是返回的新的集合
+
+2. flatmap映射 - flat即壓扁、壓平、扁平化映射
+將集合中的的每個子元素映射到某個函數並返回新的集合
+
+3. 集合元素的過濾 - filter
+filter: 將符合要求的數據(篩選)放置到新的集合中
+在函數式編程中，就是把一個集合交給一個函數，有函數決定那些數據是要的，那些數據是不要的
+應用案例:
+將val names = List("Alice", "Jack", "Alex")集合中首字母為"A"的篩選到新集合中
+
+4. 化簡
+看一個需求:
+val list = List(1, 20, 30, 40, 5)，求List的和
+化簡: 將二元函數(有兩個型參的函數)引用於集合中的函數
+val list = List(1, 20, 30, 40, 5)
+val list2 = list.reduceLeft(sum)
+def sum(n1: Int, n2: Int): Int = {
+    println("sum()被調用")
+    n1 + n2
+}
+a. def reduceLeft[B >: A](@deprecatedName('f) op: (B, A) => B): B
+b. reduceLeft(f)接收的函數需要的形式為op: (B, A) => B
+c. reduceLeft(f)運行的規則是從左邊開始執行，將得到的結果返回給第一個參數，然後繼續和下一個元素運行，將得到的結果
+   返回給第一個參數... -> 遞歸調用
+
+reduceLeft(_ + _): reduceLeft除了可以傳一個函數進去，也可以傳一個匿名函數進去
+
+5. 摺疊
+fold函數將上一步返回的值作為函數的第一個參數繼續傳遞參與運算，直到list中的所有元素被遍歷
+a. 可以把reduceLeft看作簡化版的foldLeft
+   源代碼:
+   def reduceLeft[B >: A](@deprecatedName('f) op: (B, A) => B): B =
+       if (isEmpty) throw new UnsupportedOperationException("empty.reduceLeft")
+       else tail.foldLeft[B](head)(op)
+   可以看到，reduceLeft就是調用foldLeft[B](head)，並且是默認從集合的head元素開始操作的，使用fold()時，必須指定
+   head，head可以是值或集合(這是更常見的情況)
+b. 相關函數: fold、foldLeft、foldRight，可以參考reduce的相關方法
+foldLeft()和foldRight()可以被簡寫為/:和:\
+val num = 1 /: list1 // 等價於val num = list1.foldLeft(1)(minus)
+val num = list1 :\ 10 // 等價於val num = list1.foldRight(10)(minus)
+
+6. 掃描
+對某個集合的所有元素都進行fold操作，但是會把產生的所有中間結果放置於一個集合中保存

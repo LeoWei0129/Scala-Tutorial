@@ -1,0 +1,25 @@
+單例模式 Singleton Pattern
+
+甚麼是單例模式?
+是指保證在整個的軟體系統中，某個類只能存在一個對象實體
+
+單例模式的應用場景
+比如在Hibernate的SessionFactory，他充當數據存儲源的代理，並負責創建Session對象，Session並不是輕量級的，
+一般情況下，一個項目通常只需要一個SessionFactory就夠，這時就會使用到單例模式
+Akka的AkkaSystem也是單例
+
+Scala的單例模式應用案例
+Scala沒有靜態的概念，所以為了實現Java中單例模式的功能，可以直接採用類對象(object)方式構建單例對象
+
+兩種單例模式的創建方法
+1. 懶漢式
+2. 餓漢式
+
+應用單例模式時，定義在伴生類中用來創建唯一實體的方法可以寫在apply()或不寫在apply()中，任意一個方法都可以
+但差別在於，若是寫在apply()方法中，創建實體的方式為
+val a = LazySingleton() // 自動調用apply()
+沒寫在apply()方法中，假設寫在getInstance()中，創建實體的方式為
+val a = LazySingleton.getInstance()
+
+所以在單例模式中，這個負責創建類別的類，不該有apply()，而是一個類似getInstance()來創建一個它的唯一個實體
+

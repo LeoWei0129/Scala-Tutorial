@@ -1,0 +1,48 @@
+Package
+
+Java包的三大作用(Scala同)
+1. 區分相同名字的類
+2. 當類很多時，可以很好地管理類
+3. 控制訪問範圍(修飾符決定)
+4. 可以對類的功能進行擴展(scala)
+
+Java打包命令(Scala同)
+package com.unimicron.*;
+打包就是創建不同文件夾來保存文件
+
+Scala中包名和源碼所在的系統文件上的目錄結構可以不一致，但是編譯器的.class檔文件路徑和包名會保值一致(這個
+工作由編譯器完成)
+
+命名規則
+只能包含數字、字母、_、.、包名不能用數字開頭，也不能使用關鍵字，且一般是寫小字母
+
+命名規範
+com.公司名稱.項目名稱.業務模塊名稱
+com.unimicron.edu.scala-practice
+
+Scala會自動引入的常用包
+1. java.lang.*
+2. scala包
+3. Predef包
+
+Scala包的注意事項
+1. 打包可以有多種形式(如packageway包所示)
+2. 包也可以像嵌套類那樣使用(包中有包)，這樣在前面的第三種打包方式已經講過了，這種好處是: 可以在同一個文件
+   中，將class、object、trait創建在不同的包中，這樣就非常靈活了
+3. 作用域原則: 在同一份.scala文件中，可以直接向上訪問，Scala中子包直接訪問父包中的內容，大括號體現了作用域
+   Java中子包使用父包的類，需要import，而Scala中在子包的類和父包的類重名時，採就近原則，如果希望指定使用
+   某個類，則帶上包名即可
+4. 父包要訪問子包的內容時，需要import對應的類等
+5. 可以在同一個.scala文件中，聲明多個並列的package(建議嵌套的package不要超過3層)
+
+包對象
+基本介紹: 包可以包含class、object、trait，但不能包含function/method、variable的定義，這是JVM的侷限，為了
+彌補這項不足，Scala提供了包對象的概念來解決這個問題
+注意事項:
+1. 每個包都可以有一個包對象，且必須再父包中定義
+2. 包對象名稱需與包名一致，一般用來對包的功能的補充
+
+包對象底層生成機制
+1. 當創建包對象後，在該包下生成public final class package和public final class package$
+2. 通過package$的一個靜態實例完成對包對象中的屬性和方法的調用
+3. 在底層，包對象會生成兩個類(.class檔): package.class、package$.class

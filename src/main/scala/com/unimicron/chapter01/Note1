@@ -1,0 +1,4 @@
+製作文檔註釋
+1. 打開cmd
+2. 進到*.scala所在路徑
+3. scaladoc -d D:\mydoc CommentDemo.scala # 製作CommentDemo.scala文檔註釋，將該註釋存於D:\mydoc

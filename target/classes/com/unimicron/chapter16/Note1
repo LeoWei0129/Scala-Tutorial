@@ -1,0 +1,58 @@
+併發編程模型Akka
+
+Akka介紹
+1. Akka是Java虛擬機JVM平台上構建高併發、分布式和容錯應用的工具包和運行時，你可以理解程Akka是編寫併發程序的框架
+2. Akka用Scala語言寫成，同時提供了Scala和Java的開發接口
+3. Akka主要解決的問題是: 可以輕鬆地寫出高效穩定的併發程序，程序源不再需要過多地考慮線程、鎖和資源競爭等細節
+
+Akka中的Actor模型
+Actor模型用於解決甚麼問題?
+1. 處理併發問題的關鍵是要保證共享數據的一致性和正確性，因為程序是多線程時，多個線程對同一個數據進行修改，若不加同步條件，勢必
+   會造成數據汙染。但是當我們對關鍵代碼加入同步條件synchronized後，實際上大併發就會阻塞在這段代碼，對程序效率有很大影響
+2. 若是用單線程處理，不會有數據一致性的問題，但是系統的性能又不能保證
+3. Actor模型的出現解決了這個問題，簡化併發編程，提升程序性能。你可以這樣理解: Actor模型是一種處理併發問題的解決方案，很牛!
+經典案例: 售票系統
+
+Actor模型及其說明(Actor System)
+1. Akka處理併發的方法是基於Actor模型
+2. 在基於Actor的系統裡，所有的事物都是Actor，就好像在面向對象設計裡面所有的事物都是對象一樣
+3. Actor模型是作為一個併發模型設計和架構的，Actor和Actor之間只能透過消息通信，這個消息會發給與Actor綁定的mailbox，
+   mailbox一收到消息，就會推送給Actor，讓Actor知道(mailbox被封裝起來，看不到)
+4. Actor與Actor之間只能用消息進行溝通，當一個Actor給另外一個Actor發消息，消息是有順序的(消息隊列)，只需要將消息投
+   遞到相應的mailbox即可，此時mailbox也會持有該Actor的實例(by傳遞過來的ActorRef)(由mailbox存放消息隊列)
+5. 怎麼處理消息是由接收消息的Actor決定的，發送消息的Actor可以等待回覆，也可以異步處理
+6. Actor System的職責是負責創建並管理其創建的Actor，Actor System是單例的，一個JVM進程中有一個即可，而Actor可以
+   有多個
+7. Actor模型是對併發模型進行了更高的抽象(mailbox被封裝起來，看不到)
+8. Actor模型是異步、非阻塞、高性能的事件驅動編程模型(說明甚麼是異步、非阻塞->最經典的案例是Ajax異步處理請求)
+9. Actor模型是輕量級事件處理(1GB內存可以容納百萬級別個Actor)，因此處理大併發性能高
+異步: Actor1發送消息後，不管Actor2要如何處理消息，Actor1繼續執行處理自己的消息(可以是接收、發送、內部處理消息)，
+不必等待Actor2回送消息後才能繼續處理消息
+
+Actor模型的工作機制說明
+1. A Actor如果想給自己發消息，就通過A ActorRer(A Actor的引用)
+2. A Actor想給B Actor發消息，就需要有(持有)B ActorRef，通過B ActorRef發消息，並將這個消息發送到Dispatcher
+   Message(線程池，可以想成郵局，所有的消息分發任務都交給Dispatcher Message，由它進行調度與管理)，Dispatcher
+   Message會為這個消息找到對應的mailbox(因為Dispatcher Message知道B Actor在哪)，從不同Actor發消息到B Actor
+   的mailbox，形成消息隊列(位於MQ的消息會記錄此條消息從哪個Actor發送)，一旦mailbox拿到消息，就會將消息推送給
+   B Actor(實際上是mailbox會有B Actor的實例(by B ActorRef)，藉由這個實例調用B Actor的receive()，完成消息
+   推送)
+B Actor中
+receive方法{
+    // 1. 消息接收和處理
+    // 2. 通過sender()方法可以得到發送消息的Actor的ActorRef，通過這個ActorRef，B Actor可以回覆消息
+}
+
+小結
+1. Actor System創建Actor
+2. ActorRef可以理解成是Actor的代理或者引用，消息是通過ActorRef來發送，而不能通過Actor發送消息，通過哪個ActorRef
+   發消息，就表示把該消息發給哪個Actor
+3. 消息發送到Dispatcher Message(消息分發器)，他得到消息後，會將消息進行分發到對應的mailbox(Dispatcher Message
+可以理解成是一個線程池，mailbox可以理解成是一個消息隊列，可以緩衝多個消息，遵守FIFO)
+4. Actor可以通過receive方法來獲取消息，然後進行處理
+
+Actor間傳遞消息機制
+1. 每一個消息就是一個Message對象，Message繼承了Runable，因為Message就是線程類
+2. 從Actor模型工作機制看上去很麻煩，但編程時只需要編寫Actor就可以了，其他的交給Actor模型完成即可
+3. A Actor要給B Actor發送消息，那麼A Actor要先拿到(持有)B Actor的代理對象ActorRef才能發送消息
+

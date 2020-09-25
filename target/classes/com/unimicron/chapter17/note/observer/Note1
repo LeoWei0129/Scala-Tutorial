@@ -1,0 +1,48 @@
+觀察者模式 Observer Pattern
+
+看一個項目需求
+氣象站項目，需求如下:
+1. 氣象站可以將每天測量到的溫度、濕度、氣壓等，以公告的方式發布出去(比如發佈到自己的網站)
+2. 需要設計開放型API，便於其他第三方公司也能進入氣象站獲取數據
+3. 提供溫度、氣壓和濕度的接口
+4. 測量數據更新時，要能實時的通知給第三方
+
+WeatherData類
+通過對氣象站項目的分析，我們可以初步設計出一個WeatherData類
+WeatherData類: getTemperature()、getHumidity()、getPressure()、dataChange()
+1. 通過getXXX方法，可以讓第三方相關信息公司接入
+2. 當數據有更新時，氣象站通過調用dataChange()，去更新數據，當第三方再次獲取時，就能得到最新數據，當然也可
+   以推送
+
+方案一(普通方法)
+問題分析
+1. 其他第三方公司接入氣象站獲取數據的問題
+2. 無法在運行時動態的添加第三方
+=> 在WeatherData中，當增加一個第三方，都需要創建一個對應的第三方的公告版對象，並加入到dataChange中，這
+   麼做不利於維護，也不是動態加入，違反OCP原則
+class WeatherData{
+    def dataChange() = {
+        // A公司的公告版，獲取氣象站的數據
+        mCurrentCondition1.update(getTemperature(), getPressure(), getHumidity())
+        // B公司的公告版，獲取氣象站的數據
+        mCurrentCondition2.update(getTemperature(), getPressure(), getHumidity())
+    }
+}
+
+方案二(觀察者模式)
+觀察者模式類似訂牛奶業務
+1. 奶站: Subject
+2. 用戶/第三方: Observer
+Subject: 登記註冊、移除、通知
+1. registerObserver: 註冊
+2. removeObserver: 移除
+3. notifyObserver: 通知所有註冊的用戶，根據不同需求，可以是更新數據、讓用戶讀取、也可能是實施推送，看
+   具體需求而定
+觀察者模式: 對象之間多對一依賴的一種設計方案，被依賴的對象為Subject，依賴的對象為Observer，Subject通知
+Observer變化，比如這裡的奶站是Subject，是1的一方，用戶對Observer，是多的一方
+觀察者模式的好處:
+1. 觀察者模式設計後，會以集合的方式來管理用戶(Observer)，包括註冊、移除和通知
+2. 這樣，我們增加觀察者(這裡可以理解成一個新的公告版)，就不需要去修改核心類WeatherData，不會修改代碼，他可
+   以作為一個獨立的進程保持運行，無須重新載入
+
+

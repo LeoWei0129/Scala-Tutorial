@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b84a628a-5131-447a-bdae-21afce8fd401" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Package Object" />
+        <option value="Scala Trait" />
+        <option value="Scala Object" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1WfWzoZ2YaiHbAlXnMMb7YqIAGD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/scala/com/unimicron/chapter17/proxy/remotes/remote" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\a0846\IdeaProjects\scala-practice\src\main\scala\com\unimicron\chapter17\note\singleton" />
+      <recent name="C:\Users\a0846\IdeaProjects\scala-practice\src\main\scala\com\unimicron\chapter17\note\factory" />
+      <recent name="C:\Users\a0846\IdeaProjects\scala-practice\src\main\scala\com\unimicron\chapter17\note\factorypattern" />
+      <recent name="C:\Users\a0846\IdeaProjects\scala-practice\src\main\scala\com\unimicron\chapter10" />
+      <recent name="C:\Users\a0846\IdeaProjects\scala-practice\src\main\scala\com\unimicron\chapter09" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.unimicron.chapter17.decorator" />
+      <recent name="com.unimicron.chapter17.factorypattern.absfactory.pizzastore.order" />
+      <recent name="com.unimicron.chapter17.factorymethod.pizzastore.order" />
+      <recent name="com.unimicron.chapter17.factorymethod.pizzastore.pizza" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\a0846\IdeaProjects\scala-practice\src\main\scala\com\unimicron\chapter17\proxy\remotes\remote" />
+      <recent name="C:\Users\a0846\IdeaProjects\scala-practice\src\main\scala\com\unimicron\chapter17\absfactory" />
+      <recent name="C:\Users\a0846\IdeaProjects\scala-practice\src\main\scala\com\unimicron\chapter17" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.CatDemo">
+    <configuration name="CatDemo" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.unimicron.chapter06.CatDemo" />
+      <module name="scala-practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.unimicron.chapter06.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GenericDemo01" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.unimicron.chapter18.GenericDemo01" />
+      <module name="scala-practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.unimicron.chapter18.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GenericDemo02" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.unimicron.chapter18.GenericDemo02" />
+      <module name="scala-practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.unimicron.chapter18.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.unimicron.chapter17.proxy.dynamic.MainTest" />
+      <module name="scala-practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.unimicron.chapter17.proxy.dynamic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyRemoteImpl" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.unimicron.chapter17.proxy.remotes.rmi.MyRemoteImpl" />
+      <module name="scala-practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.unimicron.chapter17.proxy.remotes.rmi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.MyRemoteImpl" />
+      <item itemvalue="Application.MainTest" />
+      <item itemvalue="Application.GenericDemo01" />
+      <item itemvalue="Application.GenericDemo02" />
+      <item itemvalue="Application.CatDemo" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CatDemo" />
+        <item itemvalue="Application.GenericDemo01" />
+        <item itemvalue="Application.GenericDemo02" />
+        <item itemvalue="Application.MainTest" />
+        <item itemvalue="Application.MyRemoteImpl" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b84a628a-5131-447a-bdae-21afce8fd401" name="Default Changelist" comment="" />
+      <created>1579541398382</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579541398382</updated>
+      <workItem from="1579541412278" duration="2306000" />
+      <workItem from="1580016273489" duration="702000" />
+      <workItem from="1580049715488" duration="32968000" />
+      <workItem from="1580742291861" duration="6227000" />
+      <workItem from="1582469176989" duration="3167000" />
+      <workItem from="1588181520929" duration="2204000" />
+      <workItem from="1601051251911" duration="194000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1493" height="73" key="GridCell.Tab.0.bottom" timestamp="1601051446765">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="73" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601051446765" />
+    <state width="1493" height="73" key="GridCell.Tab.0.center" timestamp="1601051446764">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="73" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601051446764" />
+    <state width="1493" height="73" key="GridCell.Tab.0.left" timestamp="1601051446764">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="73" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601051446764" />
+    <state width="1493" height="73" key="GridCell.Tab.0.right" timestamp="1601051446764">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="73" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601051446764" />
+    <state x="457" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1601051257970">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="457" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1601051257970" />
+  </component>
+</project>

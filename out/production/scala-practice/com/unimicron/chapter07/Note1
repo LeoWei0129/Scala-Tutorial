@@ -1,0 +1,24 @@
+使用javap指令查看Student.class生成的方法
+C:\Users\a0846\IdeaProjects\scala-practice\target\classes\com\unimicron\chapter0
+7>javap Student.class
+Compiled from "Example01.scala"
+public class com.unimicron.chapter07.Student {
+  public java.lang.String name(); // 默認生成
+  public void name_$eq(java.lang.String); // 默認生成
+  public long id();
+  public void id_$eq(long);
+  public long getId();
+  public java.lang.String getName(); // 根據@BeanProperty生成
+  public void setId(long);
+  public void setName(java.lang.String); // 根據@BeanProperty生成
+  public com.unimicron.chapter07.Student();
+}
+
+變量默認被聲明為private
+1. @BeanProperty val name = ""
+使用註釋@BeanProperty，會生成getter()、setter()，但實際上會分別調用name()、name_$eq()，這四個function都
+是public，都可以在外部被調用，但聲明為@BeanProperty的變量不可以顯式地聲明private
+2. private val name = ""
+顯式地聲明變量為private，name()、name_$eq()也會是private，這樣在外部就無法透過這兩個方法調用變量
+3. val name = ""
+只有變量為private，name()、name_$eq()是public，所以可以在外部透過這兩個方法調用變量

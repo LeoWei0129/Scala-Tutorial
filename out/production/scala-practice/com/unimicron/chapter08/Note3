@@ -1,0 +1,7 @@
+繼承層級
+1. 在scala中，所有其他類都是AnyRef的子類，類似Java的Object
+2. AnyVal和AnyRef都擴展自Any類，Any類是根節點
+3  Any中定義了isInstanceOf、asInstanceOf方法、哈希方法等
+4. Null類型的唯一實例就是null對象，可以將null賦值給任何引用，但不能賦值給值類型的變量
+5. Nothing類型沒有實例，他對於泛型結構是有用處的，舉例: 空列表Nil的類型是List[Nothing]，他是List[T]的子類型，
+   T可以是任何類

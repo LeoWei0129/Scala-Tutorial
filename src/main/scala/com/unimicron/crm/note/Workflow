@@ -1,0 +1,54 @@
+項目開發流程
+
+1. 項目需求分析
+模擬實現基於文本介面的客戶訊息管理系統
+該系統Scala能夠實現對客戶對象的插入、修改、刪除、查詢(用ArrayBuffer或ListBuffer實現)，並能夠打印客戶的明細表
+
+2. 項目設計 - 項目介面
+a. 主介面
+b. 添加客戶介面
+c. 修改客戶介面
+d. 刪除客戶介面
+e. 客戶列表介面
+
+3. 項目設計 - 程序框架圖(使用分層模式開發View、Service、Dao)
+程序框架圖: 設計系統有多少個文件，以及文件之間的調用關係，一般來說，一個文件對應一個類，可以幫助程序員實現模塊的設計
+(清晰)，以及便於程序員之間對項目的交流 => 業務、優化、設計方案
+view: 介面層
+service: 邏輯操作層
+bean: 數據層
+app: 調用層(程序的入口)
+
+4. 項目功能實現
+a. 完成Customer類
+根據需求文檔或者頁面，寫出Customer類
+b. 完成顯示主菜單
+(1) 功能說明: 添加客戶 / 修改客戶 / 刪除客戶 / 客戶列表 / 退出
+(2) 思路分析:
+將主菜單的顯示放入到while
+用戶可以根據輸入，選擇自己的操作
+如果輸入5退出
+(3) 根據功能說明與思路分析，完成CustomerView類
+c. 完成顯示客戶列表的功能
+(1) 功能說明: 顯示客戶列表
+(2) 思路分析:
+在CustomerView中，選擇4，顯示客戶列表
+在CustomerView中，調用CustomerService的showList方法，因此需要一個CustomerService對象(屬性)
+在CustomerService中，編寫一個showList方法，返回當前系統有哪些客戶
+客戶放在哪? 內存中(假設這是基於Spark的系統) -> 可變集合存儲數據，如ArrayBuffer、ListBuffer(因為需要增刪改查)
+d. 完成添加客戶的功能
+(1) 功能說明: 添加客戶
+(2) 思路分析:
+在CustomerService中，編寫一個addCustomer方法，接收一個Customer對象
+在CustomerService中，加入到ArrayBuffer中
+在CustomerView中，接收客戶訊息，並定義創建Customer對象
+在CustomerView中，調用CustomerService的addCustomer方法
+在CustomerService中，以客戶是添加第幾個作為他的id(id自動生成)
+f. 完成刪除客戶的功能
+(1) 功能說明: 刪除客戶
+(2) 思路分析:
+在CustomerService中，編寫一個findIndexById方法，因為ArrayBuffer索引和id並不是對應的
+在CustomerService中，編寫一個delCustomer方法，接收一個id，並調用findIndexById方法
+在CustomerService中，如果發現有此對應的index，則刪除，否則返回false
+在CustomerView中，接收欲刪除的id，並調用CustomerService的delCustomer方法
+

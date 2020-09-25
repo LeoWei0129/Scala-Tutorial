@@ -1,0 +1,26 @@
+泛型 Generic
+
+基本介紹
+1. 如果我們要求函數的參數可以接收任意類型，可以使用泛型，這個類型可以代表任意的數據類型
+2. 例如List，在創建List時，可以傳入整型、字符串、浮點數等等任意類型，那是因為List在類定義時引入了泛型，比如在
+   Java中，public interface List<E> extends Collection<E>
+
+Scala泛型應用案例1
+1. 編寫一個Message類
+2. 可以構建int類型的Message、String類型的Message
+3. 要求使用泛型來完成設計，不使用Any
+* 若使用Any，返回的也是Any，這樣還需要再額外做類型轉換
+
+Scala泛型應用案例2
+1. 設計一個EnglishClass類，在創建EnglishClass的一個實例中，需要指定班級開設季節(春夏秋冬)、班級名稱、班級類型
+2. 開班季節只能是指定的，班級名稱是String，班級類型是String或Int
+3. 使用泛型完成
+
+Scala泛型應用案例3
+1. 定義一個函數，可以獲取各種類型的List的中間index的值
+2. 使用泛型完成
+
+是否需要另外定義子類來指名該子類的泛型類別?
+取決於繼承的方法是否需要override，如果不需要，就可以不另外定義子類，只有一個類就好: class A[T](a: T){}，
+接著在創建該類時，再指定泛型類別即可: new A[Int](10) or new A[String]("hello")
+

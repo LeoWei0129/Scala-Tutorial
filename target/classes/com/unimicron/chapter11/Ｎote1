@@ -1,0 +1,25 @@
+Scala集合(由數據結構實現的功能)
+
+Scala同時支持不可變集合和可變集合，不可變集合可以安全地併發訪問
+兩個主要的包:
+1. 不可變集合: scala.collection.immutable
+2. 可變集合: scala.collection.mutable
+Scala默認採用不可變集合(不須額外import)，對於幾乎所有的集合類，Scala都同時提供了可變和不可變的版本
+Scala的集合有三大類: 序列(Seq)、集Set、映射Map，所有的集合都擴展自Iterable特質，在Scala中有可變(mutable)和不可變(immutable)兩種類型
+
+舉例
+不可變集合: 集合本身不能動態變化(可以改內容，但無法增長/減少)
+可變集合: 集合本身可以動態變化
+
+小結
+1. Set、Map是Java中也有的集合
+2. Seq是Java沒有的，在Scala中，List歸屬到Seq下了，因此這裡的List就和Java不是同一個概念了
+3. CollectionDemo01.scala中的for loop有一個1 to 3，就是IndexedSeq Vector
+4. String屬於IndexedSeq
+5. 我們發現罪經舔的數據結構如queue和stac被歸屬到LinearSeq
+6. Scala中的Map體系下有一個SortedMap，說明Scala的Map可以支持排序
+7. IndexedSeq和LinearSeq的區別: IndexedSeq是通過所引來查找和定位，因此速度快，比如String就是一個索引集合，通過索引就可以定位，
+   LinearSeq是線型的，即有頭尾的概念，這種數據結構一般是透過遍歷來查找，所以查找速度較慢，它的價值在於應用到一些具體的應用場景中
+8. 對可變集合而言...
+   a. 在可變集合中，比不可變集合更加豐富，在Seq集合類中，增加了Buffer集合，將來開發中，常用的有ArrayBuffer和ListBuffer，
+   b. 如果涉及到線程安全(不可變集合本身就是線程安全，有時也希望操作可變集合時也要有線程安全功能)，可以選擇使用syn開頭的集合

@@ -1,0 +1,6 @@
+隊列Ｑueue
+
+1. Queue是一個有序列表，在底層可以用數組或是鏈表來實現
+2. 其輸入和輸出要遵循先入先出的原則，即: 先存入隊列的數據，要先取出，後存入的要後取出
+3. 在Scala中，由設計者直接提供隊列類型使用
+4. 在Scala中，有Scala.collection.immutable.Queue和Scala.collection.mutable.Queue，一般來說，開發中通常使用可變集合的Queue

@@ -1,0 +1,11 @@
+集Set
+
+集是不重複元素的集合，集不保留順序，默認是以哈希集實現
+
+Java中的Set
+Java中，HashSet是實現Set<E>接口的一個實現體，數據是以哈希表的形式存放的，裡面不能包含重複的數據，Set接口是一種不包含重複元素的collection，
+HashSet中的數據也是無序的
+
+Scala中的Set
+默認情況下，Scala使用的是不可變集合，如果要使用可變的，需要引用scala.collection.mutable.Set
+若在創建時，給了重複的值，Scala會自動過濾掉重複值

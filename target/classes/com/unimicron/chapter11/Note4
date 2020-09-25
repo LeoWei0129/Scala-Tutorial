@@ -1,0 +1,23 @@
+列表List
+
+Scala中的List和Java List不一樣，在Java中List是一個接口，真正存放數據的是實現接口的ArrayList類，而Scala的List可以直接存放數據，就是
+一個object，默認情況下Scala的List是不可變的，List屬於子序列Seq
+
+小結
+1. List默認為不可變的集合
+2. List在Scala包對象聲明的，因此不需要引入其他包也可以使用
+3. val List = scala.collection.immutable.List
+4. List中可以放任何數據類型，此時List的類型為List[Any]
+5. 如果希望得到一個空列表，可以使用Nil對象，在Scala包對象聲明的，因此不需要引入其他包就可以使用
+
+在列表中增加元素，會返回新的列表/集合對象，注意: Scala中List元素的追加形式和Java不一樣
+1. 在列表的最後追加元素 :+
+2. 在列表的最前面追加元素 +:
+3. 另外一種在列表的最後追加元素
+   a. 符號::表示在集合中，新建集合追加元素
+   b. 運算時，集合對象一定要放置在最右邊
+   c. 運算規則: 從右向左
+   d. 符號:::是將集合中的每一個元素加入空集合中去，也就是將左邊的集合打散再放到右邊的集合中去，所以:::兩邊都必須是集合
+
+ListBuffer
+ListBuffer是可變的List集合，可以添加、刪除元素，ListBuffer屬於序列

@@ -1,0 +1,9 @@
+case 1
+利用模式匹配，編寫一個swap函數，接受一個整數的對偶，返回對偶的兩個組成部件互換位置的新對偶
+
+case 2
+利用模式匹配，編寫一個swap函數，交換數組中前兩個元素的位置，前提條件是數組長度至少為2
+
+case 3 - WordCount
+val lines = List("abc hi hello hi", "abc def hello hello hi abc hello hello")
+使用映射函數，list中，統計各個單詞出現的次數，並按出現次數排序

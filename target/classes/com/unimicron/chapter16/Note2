@@ -1,0 +1,29 @@
+案例(Akka項目在另一個project下: akka-project)
+
+case 1
+1. 編寫一個Actor，比如SayHelloActor
+2. SayHelloActor可以給自己發送消息，如:
+發送: hello   回覆: hello too:)
+發送: ok      回覆: ok too:)
+接收到exit指令，退出系統...
+3. 要求使用Maven的方式來構建項目，這樣可以很好地解決項目開發包的依賴關係
+   (下載Akka開發包，Akka版本和Scala的版本有對應關係)
+
+case 2
+1. 編寫兩個Actor，分別是AActor和BActor
+2. AActor和BActor之間可以相互發送消息，如:
+3. 加強對Actor傳遞消息機制的理解
+
+使用Maven建立項目的流程
+1. 創建一個Maven項目(com.unimicron.akka-project)
+2. 將下面的maven配置akka的通用模板copy到pom.xml文件中(AkkaPom)
+3. 因為按照配置模板的內容，"指定源碼包和測試包的位置"的部分
+<sourceDirectory>src/main/scala</sourceDirectory>
+<testSourceDirectory>src/test/scala</testSourceDirectory>
+我們需要創建對應的scala目錄，並標記為source root
+4. 當修改後，須從maven repository下載對應的包，速度比較慢
+5. 注意: 有時配置好pom.xml文件後，maven不會自動下載相關依賴包，需要File / Settings / Build, Execution, Deployment /
+   Build Tools / Maven下，勾選Always update snapshots，並且不需要連網，如果按照這個方法解決maven依賴後，仍
+   然pom.xml有誤，則只需要重新啟動idea，或者動一夏pom.xml(不用改)，重新保存即可
+6. 因為maven已經加入scala的依賴包，不需要再Add Framework Support去選Scala
+7. 上述步驟完成後，即可進行Akka開發

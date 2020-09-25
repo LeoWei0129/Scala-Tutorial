@@ -1,0 +1,15 @@
+apply()實作細節
+
+class Pig {} // 底層: class Pig
+
+object Pig{ // 底層: class Pig$
+    def apply(...){...}
+}
+
+當伴生類中定義了apply()來創建類別時，以下的區別:
+val a1 = Dog() // 自動觸發def apply()，底層:　Pig pig3 = Pig.MODULE$.apply
+val a2 = Dog // 不會觸發def apply()，底層: Pig$ pig4 = Pig.MODULE$
+
+a1: 實際創建了實體Pig(底層class Pig)，可直接使用該類的屬性和方法
+a2: 實際創建的是另一個類別(底層class Pig$)的實體，該類別中沒有定義其對應類的屬性和方法，所以無法調用，
+    必須再額外: a2.apply()才能真正創建Pig實體

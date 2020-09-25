@@ -1,0 +1,50 @@
+裝飾者模式 Decorator Pattern
+
+看一個項目需求
+咖啡館訂單系統項目:
+1. 咖啡種類/單品咖啡: Espresso、ShortBlack、LongBlack、Decaf
+2. 調料: Milk、Soy、Chocolate
+3. 要求在擴展新的咖啡種類時，具有良好的擴展性、改動方便、維護方便
+4. 使用OO的來計算不同種類咖費的費用: 客戶可以點單品咖啡，也可以點單品咖啡+調料組合
+
+方案一: 每種組合都寫一個類(Espresso、Espresso+(Milk)、Espresso+(Milk, Soy)) -> 共 7*4=28 個類
+1. Drink是一個抽象類，表示飲料
+2. description是描述，比如咖啡的名字等
+3. cost是計算費用，是一個抽象方法
+4. Decaf等等就是具體的單品咖啡，繼承Drink，並實現cost方法
+5. Espresso&Milk等等就是咖啡+各種調料的組合，這個會很多
+6. 這種設計方式時，會有很多的類，並且當增加一個新的單品咖啡或者調料時，類的數量就會倍增(類爆炸)
+
+方案二: 好一點的方案
+前面分析的方案一因為咖啡單品+調料組合會造成類的倍增，因此可以做改進，將調料內置到Drink類，這樣做就不會造成類的
+數量過多，從而提高項目的維護性
+作法: milk、soy、chocolate可以設計為Boolean方法，表示是否要添加相應的類
+問題分析
+1. 此方案可以控制類的數量，不至於造成過多的類
+2. 在增刪調料種類時，代碼維護量仍然很大
+3. 考慮到添加多份調料時，可以將Boolean改成int
+在開發中要求盡量遵守OCP(開閉原則)
+通過增加的類，來擴展功能，開: 功能擴展開放，閉: 不要去修改已有的代碼
+
+裝飾者模式原理
+1. 裝飾者模式就像打包一個快遞
+2. 主體: 比如陶瓷、衣服
+3. 包裝: 比如報紙填充、塑膠泡沫、紙板、木板
+4. Component(主體): 比如前面的Drink
+5. ConcreteComponent(具體的主體):比如前面的各個單品咖啡
+6. Decorator(裝飾器): 比如前面的各個調料
+7. ConcreteComponent和Decorator各自繼承了Component，如果ConcreteComponent類很多，可以設計一個緩衝
+   層，將共有的部分提取出來
+
+定義
+1. 動態地將新功能附加到對象上，在對象功能擴展方面，他比繼承更有彈性，裝飾者模式也體現了開閉原則ocp
+2. 這裡提到的動態地將新功能附加道對象和ocp原則，在後面的應用實例上會以代碼的形式體現
+
+用裝飾者模式重新設計的方案(裝飾者模式設計方案1&2.png)
+1. Drink(Component)這個類和前面基本一樣
+2. ShortBlack(ConcreteComponent)等單品咖啡的類的設計也和前面一樣
+3. Decorator類是一個裝飾類，其中定義了一個被裝飾的對象屬性Drink obj
+4. Milk、Soy、Chocolate(ConcreteDecorator)繼承Decorator
+5. Decorator的cost進行費用的疊加，遞歸計算出價格
+
+
